@@ -1,0 +1,36 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/tutorial.css' %}">
+
+<h2>grokonez Tutorials</h2>
+
+<a href="{% url 'upload_tutorial' %}">Upload Tutorial</a>
+
+{% if tutorials %}
+<table style="margin: 20px;">
+	<thead>
+		<tr>
+			<th>Feature Image</th>
+			<th>Title</th>
+			<th>Category</th>
+			<th>Attachment</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for tutorial in tutorials %}
+		<tr>
+			<td><img src="{{ tutorial.feature_image.url }}" width="150px"></td>
+			<td>{{ tutorial.title }}</td>
+			<td>{{ tutorial.category }}</td>
+			<td><a href="{{ tutorial.attachment.url }}" target="_blank">Download</a></td>
+			<td>
+				<form method="post" action="{% url 'tutorial' tutorial.pk %}">
+					{% csrf_token %}
+					<button type="submit">Delete</button>
+				</form>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endif %}

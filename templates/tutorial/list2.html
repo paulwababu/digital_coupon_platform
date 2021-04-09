@@ -1,0 +1,212 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Tafari Consulting International &#8211; Tafari Consulting International</title>
+	<link rel="icon" href="https://tafari-consulting.com/wp-content/uploads/TCI-favicon-Logo.png" sizes="32x32" />
+	<link rel="icon" href="https://tafari-consulting.com/wp-content/uploads/TCI-favicon-Logo.png" sizes="192x192" />
+	<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.0/examples/album/album.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">About</h4>
+              <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4 class="text-white">Contact</h4>
+              <ul class="list-unstyled">
+                <li><a href="#" class="text-white">Follow on Twitter</a></li>
+                <li><a href="#" class="text-white">Like on Facebook</a></li>
+                <li><a href="#" class="text-white">Email me</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+	  </div>
+	  
+      <div class="navbar">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+            <strong>Website Album</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    {% if messages %}
+    <ul class="messages">
+      <style>
+         .success {
+      list-style: none;
+      background-color: #2e6da4;
+      color: white;
+      box-shadow: 12px 12px 12px #e61c66;
+      text-align: center;
+    }
+
+      </style>
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading"><i class="fa fa-file-image-o" aria-hidden="true"></i> Image Engine</h1>
+          <p class="lead text-muted">Once an Image is deleted, this action cannot be undone.</p>
+          <p>
+            <a href="{% url 'home' %}" class="btn btn-primary my-2"><b><i class="fa fa-home" aria-hidden="true"></i> Home</b></a>
+			<a href="{% url 'upload_tutorial' %}" class="btn btn-success my-2"><b><i class="fa fa-upload" aria-hidden="true"></i> Upload</b></a>
+			<a href="{% url 'sms' %}" class="btn btn-warning my-2"><b><i class="fa fa-envelope-o"></i> SMS</b></a>
+      <a href="{% url 'traffic_monitor' %}" class="btn btn-secondary my-2"><b><i class="fa fa-user" aria-hidden="true"></i> Site Visitors</b></a>
+      <a href="{% url 'logout' %}" class="btn btn-danger my-2"><b><i class="fa fa-user" aria-hidden="true"></i> {{request.user}} | Logout</b></a>
+      
+    </p>
+        </div>
+	  </section>
+
+	  {% if tutorials %}
+      <div class="album py-5 bg-light">
+        <div class="container">
+			<form action="{% url 'tutorial_list' %}" method="POST">
+				{% csrf_token %}
+			<div class="container">
+				<div class="row"> 
+					<style>
+						.vf {
+							margin-left: auto;
+						}
+					</style>
+					<div class="vf col-xs-8 col-xs-offset-2" style="margin-left: auto;">
+						<div class="input-group">       
+							<input type="text" class="form-control" name="search2" placeholder="Search by Category...">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+							</span>
+						</div>
+					
+					</div>
+				</div>
+			</div>
+			</form>
+			<!--EndSearch-->
+      <br>
+          <div class="row">
+			{% for tutorial in tutorials.object_list %}
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" src="{{ tutorial.feature_image.url }}" alt="Card image cap">
+                <div class="card-body">
+				  <p class="card-text"><b>Caption: </b>{{ tutorial.title }}</p>
+				  <p class="card-text"><b>Category: </b>{{ tutorial.category }}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+						<a style="margin:5px;" type="submit" class="btn btn-outline-success" href="{{ tutorial.attachment.url }}" target="_blank"><i class="fa fa-download" aria-hidden="true"></i> Download</a>
+						<form method="POST" action="{% url 'tutorial' tutorial.pk %}">
+							  {% csrf_token %}
+							  <button style="margin:5px;" type="submit" class="btn btn-outline-danger"><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+              </form>	  
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+			</div>
+			
+			{% endfor %}
+			
+		  </div>
+		  <nav aria-label="...">
+			{% if tutorials.has_other_pages %}
+			<ul class="pagination justify-content-center">
+				{% if tutorials.has_previous %}
+			  <li class="page-item">
+				<a class="page-link" href="?page={{ tutorials.previous_page_number }}" tabindex="-1">Previous</a>
+			  </li>
+			  {% endif %}
+
+			  {% for i in tutorials.paginator.page_range %}
+				 {% if tutorials.number == i %}
+			  <li class="page-item active">
+				  <a class="page-link" href="#">{{ i }}<span class="sr-only">(current)</span></a>
+			   </li>
+			  {% endif %}
+			  {% endfor %} 
+			  <li class="page-item">
+				{% if tutorials.has_next %}
+				<a class="page-link" href="?page={{ tutorials.next_page_number }}">Next</a>
+				{% endif %}
+			  </li>
+			</ul>
+			{% endif %}
+		</nav>
+		</div>
+		{% endif %}
+      </div>
+
+    </main>
+
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>Need help? <a href="#">Contact site developer</a> or the <a href="#">site admin</a>.</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/holder.min.js"></script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hotel Images</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+	</script>
+</head>
+<body>
+
+	{% for hotel in hotel_images %}
+			<div class="col-md-4">
+					{{ hotel.name }}
+					<img src="{{ hotel.hotel_Main_Img.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
+			</div>
+	{% endfor %}
+
+</body>
+</html>

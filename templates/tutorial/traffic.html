@@ -1,0 +1,264 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Tafari Consulting International &#8211; Tafari Consulting International</title>
+	<link rel="icon" href="https://tafari-consulting.com/wp-content/uploads/TCI-favicon-Logo.png" sizes="32x32" />
+	<link rel="icon" href="https://tafari-consulting.com/wp-content/uploads/TCI-favicon-Logo.png" sizes="192x192" />
+	<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.0/examples/album/album.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">About</h4>
+              <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4 class="text-white">Contact</h4>
+              <ul class="list-unstyled">
+                <li><a href="#" class="text-white">Follow on Twitter</a></li>
+                <li><a href="#" class="text-white">Like on Facebook</a></li>
+                <li><a href="#" class="text-white">Email me</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+	  </div>
+	  
+      <div class="navbar">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <i class="fa fa-desktop" aria-hidden="true"></i> <strong> Site Visitors</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    
+    <main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading"><i class="fa fa-desktop" aria-hidden="true"></i> Site Visitors and Resources Monitor</h1>
+          <p class="lead text-muted">Contact <a href="mailto:pkiragu@tinka.co.ke">developer</a> if CPU & RAM USAGE exceeds 80%</p>
+          <p>
+            <a href="{% url 'home' %}" class="btn btn-primary my-2"><b><i class="fa fa-home" aria-hidden="true"></i> Home</b></a>
+			<a href="{% url 'upload_tutorial' %}" class="btn btn-success my-2"><b><i class="fa fa-upload" aria-hidden="true"></i> Upload</b></a>
+			<a href="{% url 'sms' %}" class="btn btn-warning my-2"><b><i class="fa fa-envelope-o"></i> SMS</b></a>
+      <a href="{% url 'tutorial_list' %}" class="btn btn-secondary my-2"><b><i class="fa fa-file-image-o" aria-hidden="true"></i> Image Engine</b></a>
+      <a href="{% url 'logout' %}" class="btn btn-danger my-2"><b><i class="fa fa-user" aria-hidden="true"></i> {{request.user}} | Logout</b></a>
+      
+    </p>
+        </div>
+	  </section>
+
+	 
+      <div class="album py-7 bg-light">
+			<div class="content-wrapper">
+                <div class="container-fluid">
+        
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a href="#">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">Site Traffic & Resources Monitor</li>
+                  </ol>
+                  <br>
+
+                  <!-- Icon Cards-->
+                  <div class="container">
+                    <div class="row">
+                        <div class="col-sm-3 block">
+                            <div class="circle a">
+                                
+                               
+                                <p><b>CPU Usage</b>
+                                    <br>
+                                    <b>{{ cpu_usage }}%</b>
+                                </p>
+                               
+                            </div>
+                        </div>
+                        <div class="col-sm-3 block">
+                            <div class="circle b">
+                               
+                                <p><b>RAM Usage</b> 
+                                    <br>
+                                    <b>{{ ram_usage }}%</b>
+                                </p>
+                              
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-3 block">
+                            <div class="circle c">
+                                
+                               
+                                <p><b>Total Site Visits</b> 
+                                    <br>
+                                    {{ totalSiteVisits }}
+                                </p>
+                                
+                            </div>
+                        </div>
+                        <div class="col-sm-3 block">
+                            <div class="circle d">
+                                <p><b>Unique Page Views</b>
+                                    <br>
+                                    {{ unique }}
+                                </p>
+                            </div>
+                        </div>
+                       
+                        
+                    </div>
+                </div>
+                <style>
+                  .block {
+                                    bottom: 30px;
+    text-align: center;
+    vertical-align: middle;
+}
+.circle {
+    font-size: 15px;
+    background: white;
+    border-radius: 200px;
+    color: white;
+    height: 170px;
+    font-weight: bolder;
+    width: 170px;
+    display: table;
+    margin: 20px auto;
+}
+.circle p {
+    vertical-align: middle;
+    display: table-cell;
+}
+                    .a {
+                        background-color: #39c0dc;
+                    }
+                    .b {
+                        background-color: darkorange;
+                    }
+                    .c {
+                        background-color: #5c6dfd;
+                    }
+                    .d {
+                        background-color: #f14c6e;
+                    }
+                    .g {
+                        background-color: greenyellow;
+                    }
+                    .f{
+                        background-color: fuchsia;
+                    }
+                </style>
+        
+                  <!-- Example contextTables Card-->
+                  <div class="card mb-3">
+                    <div class="card-header">
+                      <b style="color: #0664c9;"><i class="fa fa-table"></i> User Sessions</b></div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered" id="contextTable" width="100%" cellspacing="0">
+                          <thead>
+                            <tr>
+                              <th>Time</th>
+                              <th>IP Address</th>
+                              <th>Continent</th>
+                              <th>Country</th>
+                              <th>City</th>
+                            </tr>
+                          </thead>
+                          <tfoot>
+                            <tr>
+                              <th>Time</th>
+                              <th>IP Address</th>
+                              <th>Continent</th>
+                              <th>Country</th>
+                              <th>City</th>
+                            </tr>
+                          </tfoot>
+                          <tbody id="customer-table">
+                            {% for data in dataSaved.object_list %}
+                            <tr>
+                                <td>{{ data.datetime }}</td>            
+                                <td>{{ data.ip }}</td>
+                                <td>{{ data.continent }}</td>
+                                <td>{{ data.country }}</td>
+                                <td>{{ data.city }}</td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                      <br>
+                      <nav aria-label="...">
+                        {% if dataSaved.has_other_pages %}
+                        <ul class="pagination justify-content-center">
+                            {% if dataSaved.has_previous %}
+                          <li class="page-item">
+                            <a class="page-link" href="?page={{ dataSaved.previous_page_number }}" tabindex="-1">Previous</a>
+                          </li>
+                          {% endif %}
+
+                          {% for i in dataSaved.paginator.page_range %}
+                             {% if dataSaved.number == i %}
+                          <li class="page-item active">
+                              <a class="page-link" href="#">{{ i }}<span class="sr-only">(current)</span></a>
+                           </li>
+                          {% endif %}
+                          {% endfor %} 
+                          <li class="page-item">
+                            {% if dataSaved.has_next %}
+                            <a class="page-link" href="?page={{ dataSaved.next_page_number }}">Next</a>
+                            {% endif %}
+                          </li>
+                        </ul>
+                        {% endif %}
+                    </nav>
+                    </div>
+                    <div class="card-footer small text-muted">Updated at <span id="session-update-time">{{ now }}</span></div>
+                  </div>
+                </div>
+        
+      </div>
+
+    </main>
+
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>Need help? <a href="#">Contact site developer</a> or the <a href="#">site admin</a>.</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/holder.min.js"></script>
+  </body>
+</html>
