@@ -8,6 +8,7 @@ class Tutorial(models.Model):
     city = models.CharField(max_length=50, blank=True, null=True)
     datetime = models.CharField(max_length=50, blank=True, null=True)
     ip = models.CharField(max_length=50, blank=True, null=True)
+    number = models.CharField(max_length=50, blank=True, null=True)
     def __str__(self):
         return self.title
 

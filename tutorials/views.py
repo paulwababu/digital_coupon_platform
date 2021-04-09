@@ -77,6 +77,7 @@ def scanner(request):
         datetime = "5th January 2021"
         ip = "4.335.432.22"
         saveNow = Tutorial(
+            number=number,
             feature_image=files,
             city='NaivasUmoja',
             datetime=datetime,
@@ -99,18 +100,13 @@ def ocr(request):
     }
     data = {'urls' : ['https://pbs.twimg.com/media/CU1eHFvWUAA8wb-.jpg']}
     response = requests.request('POST', url, headers=headers, auth=requests.auth.HTTPBasicAuth('Ct3BzSvuao0XGI63hhFGzqQNDrwfkvMe', ''), data=data)
-    print(response.text)
+    print(response.json)
     #delete sessions after user is done with process
     del request.session['generatedCode']
     del request.session['phonenumber']
     return HttpResponse('Check MPESA')
 
 def tutorialList(request):
-    try:
-        number = request.session['phonenumber']
-    except:
-        return render(request, "home2.html")
-    print(number)
     tutorials = Tutorial.objects.all()
     return render(request, 'tutorial/list.html', { 'tutorials' : tutorials})
 
